@@ -1,4 +1,5 @@
 import React from 'react';
+import AnimatedLines from '../components/AnimatedLines';
 import swiggyLogo from '../assets/Swiggy-Logo.png';
 import dunzoLogo from '../assets/dunzo-logo.png';
 import uberEatsLogo from '../assets/logo-uber-eats.png';
@@ -6,8 +7,9 @@ import zomatoLogo from '../assets/Zomato-Logo.png';
 
 const ContactPage = () => {
   return (
-    <div className="min-h-screen bg-background pt-28 pb-16 px-4 lg:px-8">
-      <div className="max-w-6xl mx-auto">
+    <div className="min-h-screen bg-background pt-28 pb-16 px-4 lg:px-8 relative">
+      <AnimatedLines />
+      <div className="max-w-6xl mx-auto relative z-10">
         {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-5xl lg:text-6xl font-bowlby text-primary mb-4 drop-shadow-lg">Get In Touch</h1>

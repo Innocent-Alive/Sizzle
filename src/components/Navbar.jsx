@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import menuOpenIcon from '../assets/iconmonstr-eat-2-48.png';
 import menuCloseIcon from '../assets/iconmonstr-eat-1-48.png';
-import smileIcon from '../assets/smile.png';
-
 import { Link, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
@@ -16,7 +14,7 @@ const Navbar = () => {
   const navItems = [
     { name: 'About', path: '/about', isRoute: true },
     { name: 'Menu', path: '/menu', isRoute: true },
-    { name: 'Reviews', path: '/#Reviews', isRoute: false },
+    { name: 'Dine In', path: '/dine-in', isRoute: true },
     { name: 'Deals', path: '/#Deals', isRoute: false },
     { name: 'Order Now', path: '/#Order', isRoute: false }
   ];
@@ -55,6 +53,7 @@ const Navbar = () => {
                     navlink transition-all duration-200 rounded-[50px] no-underline px-[15px] py-[8px] text-white tracking-[1px] font-bold font-comfortaa
                     hover:bg-secondary hover:text-black hover:shadow-md
                     ${item.name === 'Order Now' ? 'border-2 border-secondary' : ''}
+                    ${location.pathname === item.path ? 'bg-secondary text-black shadow-md' : ''}
                   `}
                   onClick={() => setIsMenuOpen(false)}
                 >

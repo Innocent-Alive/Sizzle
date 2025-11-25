@@ -44,8 +44,8 @@ const Footer = () => {
         </div>
         <div className="footer flex justify-between flex-wrap gap-8">
           <div className="footer-items flex flex-col gap-2">
-            <a href="" className="text-white text-[0.8rem] transition-all duration-200 ease-in hover:underline hover:text-primary-alt">Terms &amp; Conditions</a>
-            <a href="" className="text-white text-[0.8rem] transition-all duration-200 ease-in hover:underline hover:text-primary-alt">Privacy Policy</a>
+            <Link to="/terms" className="text-white text-[0.8rem] transition-all duration-200 ease-in hover:underline hover:text-primary-alt">Terms &amp; Conditions</Link>
+            <Link to="/privacy" className="text-white text-[0.8rem] transition-all duration-200 ease-in hover:underline hover:text-primary-alt">Privacy Policy</Link>
             <a href="" className="text-white text-[0.8rem] transition-all duration-200 ease-in hover:underline hover:text-primary-alt">Caution Notice</a>
             <a href="" className="text-white text-[0.8rem] transition-all duration-200 ease-in hover:underline hover:text-primary-alt">Sizzle India</a>
           </div>

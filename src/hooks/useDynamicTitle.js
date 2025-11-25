@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 const useDynamicTitle = () => {
   useEffect(() => {
     const originalTitle = "Sizzle - flavor that blazzes";
-    const awayTitle = "🍕 Come back! We miss you! 🍔";
+    const awayTitle = "🍔 Come back! We miss you! ";
     
     const handleVisibilityChange = () => {
       if (document.hidden) {
