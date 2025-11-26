@@ -6,7 +6,8 @@ export const deals = [
     price: "459",
     offer: "Save 40%",
     variant: "primary",
-    gridClass: "md:col-span-1 md:row-span-1" // Top Left - Small
+    gridClass: "md:col-span-1 md:row-span-1", // Top Left - Small
+    code: "MEGAPARTY"
   },
   {
     id: 2,
@@ -15,7 +16,8 @@ export const deals = [
     price: "319",
     offer: "+ Free Pizza",
     variant: "dark",
-    gridClass: "md:col-span-1 md:row-span-1" // Top Mid-Left - Small
+    gridClass: "md:col-span-1 md:row-span-1", // Top Mid-Left - Small
+    code: "SPICY5"
   },
   {
     id: 3,
@@ -24,7 +26,8 @@ export const deals = [
     price: "388",
     offer: "Best Seller",
     variant: "alt",
-    gridClass: "md:col-span-1 md:row-span-1" // Top Mid-Right - Small
+    gridClass: "md:col-span-1 md:row-span-1", // Top Mid-Right - Small
+    code: "MEXFEAST"
   },
   {
     id: 4,
@@ -33,7 +36,8 @@ export const deals = [
     price: "599",
     offer: "Family Size",
     variant: "dark",
-    gridClass: "md:col-span-1 md:row-span-2" // Top Right - Tall Vertical
+    gridClass: "md:col-span-1 md:row-span-2", // Top Right - Tall Vertical
+    code: "CHICKEN12"
   },
   {
     id: 5,
@@ -42,7 +46,8 @@ export const deals = [
     price: "399",
     offer: "ROMANTIC DEAL",
     variant: "primary",
-    gridClass: "md:col-span-2 md:row-span-1"
+    gridClass: "md:col-span-2 md:row-span-1",
+    code: "DATENIGHT"
   },
   {
     id: 6,
@@ -51,7 +56,8 @@ export const deals = [
     price: "149",
     offer: "QUICK BITE",
     variant: "dark",
-    gridClass: "md:col-span-1 md:row-span-1"
+    gridClass: "md:col-span-1 md:row-span-1",
+    code: "SNACKBOX"
   },
   {
     id: 7,
@@ -60,7 +66,8 @@ export const deals = [
     price: "199",
     offer: "12PM - 4PM",
     variant: "primary",
-    gridClass: "md:col-span-1 md:row-span-2"
+    gridClass: "md:col-span-1 md:row-span-2",
+    code: "LUNCH199"
   },
   {
     id: 8,
@@ -69,7 +76,8 @@ export const deals = [
     price: "499",
     offer: "AFTER 10PM",
     variant: "dark",
-    gridClass: "md:col-span-2 md:row-span-1"
+    gridClass: "md:col-span-2 md:row-span-1",
+    code: "LATENIGHT"
   },
   {
     id: 9,
@@ -78,7 +86,8 @@ export const deals = [
     price: "99",
     offer: "VALID ID REQ.",
     variant: "secondary",
-    gridClass: "md:col-span-1 md:row-span-1"
+    gridClass: "md:col-span-1 md:row-span-1",
+    code: "STUDENT99"
   },
   {
     id: 10,
@@ -87,7 +96,8 @@ export const deals = [
     price: "49",
     offer: "ADD-ON",
     variant: "secondary",
-    gridClass: "md:col-span-1 md:row-span-1"
+    gridClass: "md:col-span-1 md:row-span-1",
+    code: "CHEESE49"
   },
   {
     id: 11,
@@ -96,7 +106,8 @@ export const deals = [
     price: "299",
     offer: "HOT & SPICY",
     variant: "dark",
-    gridClass: "md:col-span-1 md:row-span-1"
+    gridClass: "md:col-span-1 md:row-span-1",
+    code: "WINGS299"
   },
   {
     id: 12,
@@ -105,6 +116,7 @@ export const deals = [
     price: "119",
     offer: "SWEET TREAT",
     variant: "primary",
-    gridClass: "md:col-span-1 md:row-span-1"
+    gridClass: "md:col-span-1 md:row-span-1",
+    code: "SWEET119"
   }
 ];

@@ -15,9 +15,11 @@ import PrivacyPolicy from './pages/PrivacyPolicy';
 import ScrollToTop from './components/ScrollToTop';
 import AnimatedLines from './components/AnimatedLines';
 import Loader from './components/Loader';
+import Locations from './components/Locations';
 import useDynamicTitle from './hooks/useDynamicTitle';
 
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import DealsPage from './pages/DealsPage';
 
 function App() {
   useDynamicTitle();
@@ -48,7 +50,8 @@ function App() {
                   <Marquee />
                   <Menu />
                   <Reviews />
-                  <Deals />
+                  <DealsPage />
+                  <Locations />
                 </div>
               </div>
             </>
@@ -56,6 +59,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/menu" element={<MenuPage />} />
           <Route path="/dine-in" element={<DineInPage />} />
+          <Route path="/deals" element={<DealsPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/terms" element={<TermsAndConditions />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />

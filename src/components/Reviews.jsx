@@ -3,6 +3,12 @@ import AnimatedLines from './AnimatedLines';
 import person1 from '../assets/person1.jpg';
 import person2 from '../assets/person2.jpg';
 import person3 from '../assets/person3.jpg';
+import person4 from '../assets/Person4.webp';
+import person5 from '../assets/Person5.png';
+import person6 from '../assets/Person6.avif';
+import person7 from '../assets/Person7.jpg';
+import person8 from '../assets/Person8.webp';
+import person9 from '../assets/Person9.jpg';
 
 const Reviews = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -16,10 +22,16 @@ const Reviews = () => {
       text: "Absolutely amazing food! The pizzas are to die for and the service is impeccable. I order from Sizzle at least twice a week!"
     },
     {
-      img: person2,
+      img: person9,
       name: "Mahesh Raghurai",
       rating: 4.5,
       text: "The burgers here are the best I've had in Mumbai. Great value for money and the delivery is always quick. Highly recommended!"
+    },
+    {
+      img: person5,
+      name: "Priya Sharma",
+      rating: 5,
+      text: "Best tacos in town! Fresh ingredients and amazing flavors. The zesty taco is a must-try. Never disappoints!"
     },
     {
       img: person3,
@@ -28,22 +40,34 @@ const Reviews = () => {
       text: "Delicious food with generous portions. The crispy chicken is my favorite! The packaging is also very good. Will definitely order again."
     },
     {
-      img: person1,
-      name: "Priya Sharma",
-      rating: 5,
-      text: "Best tacos in town! Fresh ingredients and amazing flavors. The zesty taco is a must-try. Never disappoints!"
-    },
-    {
-      img: person2,
+      img: person4,
       name: "Rahul Verma",
       rating: 4,
       text: "Great variety on the menu. Love their combo deals! The fries are perfectly crispy and the portions are generous."
     },
     {
-      img: person3,
+      img: person6,
       name: "Sneha Patel",
       rating: 5,
       text: "Outstanding service and delicious food! The Italian pizza is authentic and tastes incredible. Highly recommended for pizza lovers!"
+    },
+    {
+      img: person8,
+      name: "Vikram Singh",
+      rating: 5,
+      text: "The ambiance is just perfect for a weekend dinner. The staff is super friendly and the food arrived piping hot. Loved it!"
+    },
+    {
+      img: person7,
+      name: "Neha Kapoor",
+      rating: 4.5,
+      text: "Sizzle never fails to impress. The pasta was creamy and rich, just how I like it. A solid 10/10 for taste and presentation."
+    },
+    {
+      img: person2,
+      name: "Arjun Reddy",
+      rating: 5,
+      text: "Hands down the best dining experience I've had in a while. The spicy wings are addictive! Can't wait to visit again."
     }
   ];
 

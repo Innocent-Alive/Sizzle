@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import heroImage from '../assets/hero-image.png';
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
   const containerRef = useRef();
@@ -9,47 +10,64 @@ const Hero = () => {
   const imageRef = useRef();
 
   useGSAP(() => {
-    gsap.from(textRef.current, {
-      x: -100,
-      opacity: 0,
-      duration: 1,
-      delay: 0.5,
-      ease: 'power3.out'
-    });
+    const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
-    gsap.from(imageRef.current, {
+    tl.from(textRef.current.children, {
+      y: 50,
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.2,
+      delay: 0.2
+    })
+    .from(imageRef.current, {
       x: 100,
       opacity: 0,
       duration: 1,
-      delay: 0.5,
-      ease: 'power3.out'
-    });
+      scale: 0.8
+    }, "-=0.6");
+
   }, { scope: containerRef });
 
   return (
-    <section ref={containerRef} id="heroSection" className="hero-section flex flex-col lg:flex-row justify-center items-center min-h-screen px-[50px] bg-primary pt-20">
-      <div ref={textRef} className="items flex flex-col gap-[10px] lg:w-1/2 p-[20px] rounded-[10px] bg-[radial-gradient(var(--color-primary-alt)_20%,var(--color-primary)_70%)]">
-        <h1 className="text-[3rem] lg:text-[3.5rem] pt-[30px] text-center lg:text-left leading-tight capitalize text-black">
-          Explore India's Culinary Wonderland!
-        </h1>
-        <p className="text-[1rem] lg:text-[1.5rem] text-center lg:text-justify">
-          A Gastronomic Journey Await! Savor the Irresistible Delights of
-          Authentic Pizza, Juicy Burgers, Crispy Fries, and More. Elevate Your
-          Taste Buds to New Heights with Every Bite.
-        </p>
-        <a href="#menu-start" className="mx-auto lg:mx-0">
-          <button type="button" className="bg-black cursor-pointer text-[1rem] lg:text-[1.2rem] font-inherit text-white no-underline outline-none border-none mt-[20px] px-[20px] py-[15px] transition-all duration-300 ease-in hover:text-secondary hover:bg-background hover:shadow-[0px_5px_15px_rgba(0,0,0,0.35)] hover:-rotate-2 hover:scale-105 active:border-[5px] active:border-primary">
-            BROWSE MENU
-          </button>
-        </a>
+    <section ref={containerRef} id="heroSection" className="hero-section min-h-screen bg-primary pt-28 pb-16 px-4 lg:px-16 flex items-center overflow-hidden relative">
+      <div className="max-w-7xl mx-auto w-full flex flex-col-reverse lg:flex-row items-center justify-between gap-12 lg:gap-8">
+        
+        {/* Left Content - Text */}
+        <div ref={textRef} className="flex-1 text-center lg:text-left z-10">
+          <h1 className="text-5xl lg:text-7xl font-bowlby text-black leading-tight mb-6 drop-shadow-sm">
+            Explore India's <br className="hidden lg:block"/>
+            Culinary <br className="hidden lg:block"/>
+            Wonderland!
+          </h1>
+          
+          <p className="text-white/90 font-comfortaa text-lg lg:text-xl leading-relaxed mb-8 max-w-2xl mx-auto lg:mx-0 font-bold drop-shadow-md">
+            A Gastronomic Journey Awaits! Savor the Irresistible Delights of
+            Authentic Pizza, Juicy Burgers, Crispy Fries, and More. Elevate Your
+            Taste Buds to New Heights with Every Bite.
+          </p>
+          
+          <Link to="/menu">
+            <button className="bg-black text-white font-bowlby text-lg px-8 py-4 rounded-xl hover:bg-white hover:text-black transition-all duration-300 shadow-[0_10px_20px_rgba(0,0,0,0.2)] hover:shadow-[0_15px_30px_rgba(0,0,0,0.3)] hover:-translate-y-1 active:translate-y-0">
+              BROWSE MENU
+            </button>
+          </Link>
+        </div>
+
+        {/* Right Content - Image */}
+        <div ref={imageRef} className="flex-1 flex justify-center lg:justify-end relative z-10">
+          {/* Decorative Glow */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-white/20 blur-[100px] rounded-full -z-10"></div>
+          
+          <img 
+            src={heroImage} 
+            alt="Delicious Burger" 
+            className="w-full max-w-[500px] lg:max-w-[650px] object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.3)] hover:scale-105 transition-transform duration-500"
+          />
+        </div>
       </div>
-      <div ref={imageRef} className="items lg:w-1/2 flex justify-center">
-        <img 
-          src={heroImage} 
-          alt="burger image" 
-          className="drop-shadow-[12px_15px_15px_#222] h-[300px] lg:h-[400px] w-auto max-w-[600px]"
-        />
-      </div>
+
+      {/* Background Texture/Pattern (Optional subtle overlay) */}
+      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10 pointer-events-none"></div>
     </section>
   );
 };

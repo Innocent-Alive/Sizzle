@@ -3,6 +3,11 @@ import AnimatedLines from '../components/AnimatedLines';
 import ItemModal from '../components/ItemModal';
 import { menuItems, categories } from '../config/menuConfig';
 import { FaSearch, FaLeaf, FaDrumstickBite, FaExclamationCircle } from 'react-icons/fa';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const MenuPage = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -20,6 +25,54 @@ const MenuPage = () => {
                        (dietFilter === 'Non-Veg' && !item.isVeg);
     return matchesCategory && matchesSearch && matchesDiet;
   });
+
+  useGSAP(() => {
+    const mm = gsap.matchMedia();
+    const cards = gsap.utils.toArray(".menu-item-card");
+
+    mm.add({
+      // Desktop - 3 Columns
+      isDesktop: "(min-width: 1024px)",
+      // Tablet - 2 Columns
+      isTablet: "(min-width: 768px) and (max-width: 1023px)",
+      // Mobile - 1 Column
+      isMobile: "(max-width: 767px)"
+    }, (context) => {
+      let { isDesktop, isTablet, isMobile } = context.conditions;
+
+      cards.forEach((card, index) => {
+        let initialConfig = { opacity: 0, duration: 0.6, ease: "power3.out" };
+
+        if (isDesktop) {
+          if (index % 3 === 0) initialConfig.x = -50; // Left
+          else if (index % 3 === 1) initialConfig.scale = 0.8; // Middle
+          else initialConfig.x = 50; // Right
+        } else if (isTablet) {
+          if (index % 2 === 0) initialConfig.x = -50; // Left
+          else initialConfig.x = 50; // Right
+        } else {
+          initialConfig.y = 50; // Mobile - Fade Up
+        }
+
+        gsap.fromTo(card, 
+          initialConfig,
+          {
+            opacity: 1,
+            x: 0,
+            y: 0,
+            scale: 1,
+            duration: 0.6,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: card,
+              start: "top 85%",
+              toggleActions: "play none none reverse"
+            }
+          }
+        );
+      });
+    });
+  }, { scope: containerRef, dependencies: [filteredItems] }); // Re-run when items change
 
   const VegNonVegIcon = ({ isVeg }) => (
     <div className={`w-5 h-5 border-2 ${isVeg ? 'border-green-500' : 'border-red-500'} flex items-center justify-center`}>
@@ -108,8 +161,7 @@ const MenuPage = () => {
               <div
                 key={index}
                 onClick={() => setSelectedItem(item)}
-                className="menu-item-card bg-[#1a1a1a] rounded-3xl p-6 border-2 border-primary/20 hover:border-primary transition-all duration-300 group relative overflow-hidden opacity-0 animate-fade-in cursor-pointer flex flex-col h-full"
-                style={{animationDelay: `${index * 80}ms`}}
+                className="menu-item-card bg-[#1a1a1a] rounded-3xl p-6 border-2 border-primary/20 hover:border-primary transition-all duration-300 group relative overflow-hidden cursor-pointer flex flex-col h-full"
               >
                 {/* Glow Effect */}
                 <div className="absolute -top-20 -right-20 w-40 h-40 bg-primary/10 rounded-full blur-3xl group-hover:bg-primary/20 transition-colors"></div>

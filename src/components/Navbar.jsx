@@ -22,10 +22,10 @@ const Navbar = () => {
   };
 
   const navItems = [
-    { name: 'About', path: '/about', isRoute: true },
     { name: 'Menu', path: '/menu', isRoute: true },
     { name: 'Dine In', path: '/dine-in', isRoute: true },
-    { name: 'Deals', path: '/#Deals', isRoute: false },
+    { name: 'Deals', path: '/deals', isRoute: true },
+    { name: 'About', path: '/about', isRoute: true },
     { name: 'Order Now', path: '/#Order', isRoute: false }
   ];
 

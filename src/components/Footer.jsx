@@ -3,10 +3,19 @@ import { Link } from 'react-router-dom';
 import { FaInstagram, FaYoutube, FaFacebook, FaTwitter } from 'react-icons/fa';
 import swiggyLogo from '../assets/Swiggy-Logo.png';
 import dunzoLogo from '../assets/dunzo-logo.png';
-import uberEatsLogo from '../assets/logo-uber-eats.png';
+import eatSureLogo from '../assets/eat-sure.png';
+import magicpinLogo from '../assets/magicpin.png';
 import zomatoLogo from '../assets/Zomato-Logo.png';
 
 const Footer = () => {
+  const platforms = [
+    { name: 'Swiggy', logo: swiggyLogo, url: 'https://www.swiggy.com/', height: 'h-[40px]' },
+    { name: 'Zomato', logo: zomatoLogo, url: 'https://www.zomato.com/', height: 'h-[30px]' },
+    { name: 'Eat Sure', logo: eatSureLogo, url: 'https://www.eatsure.com/', height: 'h-[35px]' },
+    { name: 'Magicpin', logo: magicpinLogo, url: 'https://magicpin.in/', height: 'h-[35px]' },
+    { name: 'Dunzo', logo: dunzoLogo, url: 'https://www.dunzo.com/', height: 'h-[30px]' },
+  ];
+
   return (
     <>
       <section id="Order" className="social-section mt-[50px] py-16 px-4">
@@ -16,19 +25,30 @@ const Footer = () => {
           
           <div className="delivery-app">
             <h3 className="text-xl text-center tracking-[1.5px] text-primary font-comfortaa mb-6">Available On Platforms:</h3>
-            <div className="delivery-logo flex gap-6 justify-center items-center flex-wrap">
-              <a rel="noopener" href="https://www.swiggy.com/" target="_blank" className="transition-transform hover:scale-110">
-                <img src={swiggyLogo} alt="Swiggy logo" className="h-[40px] w-auto hover:brightness-110" />
-              </a>
-              <a rel="noopener" href="https://www.dunzo.com/" target="_blank" className="transition-transform hover:scale-110">
-                <img src={dunzoLogo} alt="Dunzo logo" className="h-[30px] w-auto hover:brightness-110" />
-              </a>
-              <a rel="noopener" href="https://www.ubereats.com/" target="_blank" className="transition-transform hover:scale-110">
-                <img src={uberEatsLogo} alt="uber eats logo" className="h-[40px] w-auto hover:brightness-110" />
-              </a>
-              <a rel="noopener" href="https://www.zomato.com/" target="_blank" className="transition-transform hover:scale-110">
-                <img src={zomatoLogo} alt="Zomato logo" className="h-[30px] w-auto hover:brightness-110" />
-              </a>
+            <div className="delivery-logo flex gap-8 justify-center items-center flex-wrap">
+              {platforms.map((platform) => (
+                <a 
+                  key={platform.name}
+                  rel="noopener noreferrer" 
+                  href={platform.url} 
+                  target="_blank" 
+                  className="group relative transition-transform hover:scale-110"
+                >
+                  <img 
+                    src={platform.logo} 
+                    alt={`${platform.name} logo`} 
+                    className={`${platform.height} w-auto hover:brightness-110 transition-all duration-300`} 
+                  />
+                  
+                  {/* Tooltip */}
+                  <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap z-10">
+                    <div className="bg-primary text-black text-xs font-bold px-3 py-1.5 rounded-lg shadow-lg relative">
+                      Order on {platform.name}
+                      <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-primary rotate-45"></div>
+                    </div>
+                  </div>
+                </a>
+              ))}
             </div>
           </div>
         </div>
