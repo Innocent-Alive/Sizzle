@@ -33,7 +33,7 @@ const Loader = ({ isLoading }) => {
       <div 
         className={`fixed inset-0 z-[9999] flex items-center justify-center pointer-events-none transition-all duration-1000 ease-in-out will-change-transform ${
           isExiting 
-            ? 'translate-x-[calc(-50vw+60px)] translate-y-[calc(-50vh+45px)] scale-[0.5]' // Moves to top-left
+            ? 'translate-x-[calc(-50vw+105px)] translate-y-[calc(-50vh+45px)] scale-[0.5]' // Moves to top-left
             : 'scale-100'
         }`}
       >
