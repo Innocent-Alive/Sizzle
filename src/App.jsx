@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -14,15 +14,27 @@ import TermsAndConditions from './pages/TermsAndConditions';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import ScrollToTop from './components/ScrollToTop';
 import AnimatedLines from './components/AnimatedLines';
+import Loader from './components/Loader';
 import useDynamicTitle from './hooks/useDynamicTitle';
 
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 
 function App() {
   useDynamicTitle();
-  
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate loading time
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <Router>
+      <Loader isLoading={isLoading} />
       <ScrollToTop />
       <div className="App bg-background min-h-screen text-secondary">
         <Navbar />
@@ -47,6 +59,8 @@ function App() {
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/terms" element={<TermsAndConditions />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />
+          {/* Catch-all route for 404s - Redirect to Home */}
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
         <Footer />
       </div>

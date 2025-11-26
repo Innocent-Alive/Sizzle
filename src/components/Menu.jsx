@@ -4,7 +4,7 @@ import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import pizza1 from '../assets/pngegg (3).png';
 import pizza2 from '../assets/pngegg.png';
-import pizza3 from '../assets/pngegg (2).png';
+import pizza3 from '../assets/NonvegPizza2.png';
 import burger1 from '../assets/hero-image.png';
 import burger2 from '../assets/pngegg (4).png';
 import chicken from '../assets/pngegg (7).png';
@@ -47,7 +47,7 @@ const MenuCategory = ({ title, items, direction = 'left' }) => {
             >
               <div className="absolute -top-10 -right-10 w-32 h-32 bg-primary/10 rounded-full blur-2xl group-hover:bg-primary/20 transition-colors"></div>
               
-              <div className="relative h-[200px] flex items-center justify-center mb-4 flex-shrink-0">
+              <div className="relative h-[200px] flex items-center justify-center mb-4 flex-shrink-0 bg-black rounded-2xl p-4">
                 <img 
                   src={item.img} 
                   alt={item.title} 

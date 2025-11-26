@@ -56,8 +56,57 @@ body {
   }
 }
 
+@keyframes shimmer {
+  0% {
+    background-position: 200% center;
+  }
+  100% {
+    background-position: -200% center;
+  }
+}
+
+@keyframes sizzle-wave {
+  0%, 100% {
+    transform: scaleY(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scaleY(2.5);
+    opacity: 1;
+    box-shadow: 0 0 25px var(--color-primary);
+  }
+}
+
+@keyframes moveStripes {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 100px 100px;
+  }
+}
+
+@keyframes loading-bar {
+  0% {
+    width: 0%;
+    left: 0;
+  }
+  50% {
+    width: 100%;
+    left: 0;
+  }
+  100% {
+    width: 0%;
+    left: 100%;
+  }
+}
+
 .animate-fade-in {
   animation: fadeIn 0.6s ease-out forwards;
+}
+
+.animate-loading-bar {
+  animation: loading-bar 1.5s ease-in-out infinite;
 }
 
 /* Floating diagonal lines animation */

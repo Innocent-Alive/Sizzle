@@ -27,7 +27,7 @@ const AnimatedLines = () => {
   }, []);
 
   return (
-    <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
+    <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
       {/* Diagonal stripes pattern */}
       <div className="absolute inset-0" style={{
         backgroundImage: `repeating-linear-gradient(

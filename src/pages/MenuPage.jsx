@@ -2,10 +2,12 @@ import React, { useState, useRef } from 'react';
 import AnimatedLines from '../components/AnimatedLines';
 import ItemModal from '../components/ItemModal';
 import { menuItems, categories } from '../config/menuConfig';
+import { FaSearch, FaLeaf, FaDrumstickBite, FaExclamationCircle } from 'react-icons/fa';
 
 const MenuPage = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
+  const [dietFilter, setDietFilter] = useState('All'); // 'All', 'Veg', 'Non-Veg'
   const [selectedItem, setSelectedItem] = useState(null);
   const containerRef = useRef();
 
@@ -13,7 +15,10 @@ const MenuPage = () => {
     const matchesCategory = selectedCategory === 'All' || item.category === selectedCategory;
     const matchesSearch = item.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
                          item.desc.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesCategory && matchesSearch;
+    const matchesDiet = dietFilter === 'All' || 
+                       (dietFilter === 'Veg' && item.isVeg) || 
+                       (dietFilter === 'Non-Veg' && !item.isVeg);
+    return matchesCategory && matchesSearch && matchesDiet;
   });
 
   const VegNonVegIcon = ({ isVeg }) => (
@@ -35,39 +40,64 @@ const MenuPage = () => {
         </div>
 
         {/* Search and Filter Section */}
-        <div className="mb-12 flex flex-col lg:flex-row gap-6 items-center justify-between bg-[#1a1a1a] p-6 rounded-2xl border border-primary/20">
+        <div className="mb-12 flex flex-col gap-8">
           {/* Search Bar */}
-          <div className="relative w-full lg:w-1/2">
-            <input
-              type="text"
-              placeholder="Search for dishes..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full px-6 py-3 pl-12 bg-black/50 text-white rounded-full border-2 border-primary/30 focus:border-primary outline-none font-comfortaa placeholder-gray-500 transition-all"
-            />
-            <i className="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-primary text-lg"></i>
+          <div className="relative max-w-2xl mx-auto w-full group">
+            <div className="absolute inset-0 bg-primary/20 rounded-full blur-xl group-hover:bg-primary/30 transition-all duration-500 opacity-0 group-hover:opacity-100"></div>
+            <div className="relative flex items-center bg-[#1a1a1a]/80 backdrop-blur-xl border border-white/10 rounded-full p-2 shadow-2xl transition-all duration-300 focus-within:border-primary/50 focus-within:shadow-primary/20">
+              <FaSearch className="text-gray-400 text-xl ml-4" />
+              <input
+                type="text"
+                placeholder="Search for your favorite cravings..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full px-4 py-3 bg-transparent text-white placeholder-gray-500 outline-none font-comfortaa text-lg"
+              />
+            </div>
           </div>
 
-          {/* Category Filter */}
-          <div className="flex flex-wrap gap-2 justify-center">
-            {categories.map(category => (
-              <button
-                key={category}
-                onClick={() => setSelectedCategory(category)}
-                className={`px-5 py-2 rounded-full font-bold font-comfortaa transition-all duration-300 ${
-                  selectedCategory === category
-                    ? 'bg-primary text-black shadow-lg shadow-primary/30'
-                    : 'bg-black/50 text-white border border-primary/30 hover:border-primary hover:bg-primary/10'
-                }`}
-              >
-                {category}
-              </button>
-            ))}
+          {/* Filters Container */}
+          <div className="flex flex-col gap-6 items-center">
+            {/* Diet Filter */}
+            <div className="flex gap-4 p-1 bg-white/5 rounded-full backdrop-blur-sm border border-white/10">
+              {['All', 'Veg', 'Non-Veg'].map((type) => (
+                <button
+                  key={type}
+                  onClick={() => setDietFilter(type)}
+                  className={`px-6 py-2 rounded-full font-bold font-comfortaa transition-all duration-300 flex items-center gap-2 ${
+                    dietFilter === type
+                      ? 'bg-primary text-black shadow-lg'
+                      : 'text-gray-400 hover:text-white hover:bg-white/10'
+                  }`}
+                >
+                  {type === 'Veg' && <FaLeaf className={dietFilter === type ? 'text-black' : 'text-green-500'} />}
+                  {type === 'Non-Veg' && <FaDrumstickBite className={dietFilter === type ? 'text-black' : 'text-red-500'} />}
+                  {type}
+                </button>
+              ))}
+            </div>
+
+            {/* Category Filter */}
+            <div className="flex flex-wrap gap-3 justify-center">
+              {categories.map(category => (
+                <button
+                  key={category}
+                  onClick={() => setSelectedCategory(category)}
+                  className={`px-6 py-2.5 rounded-full font-bold font-comfortaa transition-all duration-300 border ${
+                    selectedCategory === category
+                      ? 'bg-primary text-black border-primary shadow-[0_0_20px_rgba(255,69,0,0.4)] scale-105'
+                      : 'bg-white/5 text-gray-300 border-white/10 hover:border-primary/50 hover:text-white hover:bg-white/10'
+                  }`}
+                >
+                  {category}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
 
         {/* Results Count */}
-        <div className="mb-6 text-gray-400 font-comfortaa">
+        <div className="mb-6 text-gray-400 font-comfortaa text-center">
           Showing <span className="text-primary font-bold">{filteredItems.length}</span> {filteredItems.length === 1 ? 'item' : 'items'}
         </div>
 
@@ -84,13 +114,11 @@ const MenuPage = () => {
                 {/* Glow Effect */}
                 <div className="absolute -top-20 -right-20 w-40 h-40 bg-primary/10 rounded-full blur-3xl group-hover:bg-primary/20 transition-colors"></div>
 
-                {/* Veg/Non-Veg Badge */}
-                <div className="absolute top-4 left-4 z-20">
-                  <VegNonVegIcon isVeg={item.isVeg} />
-                </div>
-
-                {/* Image */}
-                <div className="relative h-48 flex items-center justify-center mb-4">
+                {/* Image Container with Veg Icon */}
+                <div className="relative h-48 flex items-center justify-center mb-4 bg-black rounded-2xl p-4">
+                  <div className="absolute top-3 left-3 z-20">
+                    <VegNonVegIcon isVeg={item.isVeg} />
+                  </div>
                   <img
                     src={item.img}
                     alt={item.title}
@@ -109,9 +137,16 @@ const MenuPage = () => {
 
                   {/* Price and Button - Separated Rows */}
                   <div className="mt-auto space-y-3 pt-4 border-t border-white/10">
-                    <div className="flex items-center gap-3">
-                      <span className="text-3xl text-white font-bowlby">&#8377;{item.price}</span>
-                      <span className="text-gray-500 text-sm line-through decoration-red-500">&#8377;{item.oldPrice}</span>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <span className="text-3xl text-white font-bowlby">&#8377;{item.price}</span>
+                        <span className="text-gray-500 text-sm line-through decoration-red-500">&#8377;{item.oldPrice}</span>
+                      </div>
+                      {item.label && (
+                        <span className="bg-gradient-to-r from-orange-500 to-red-600 text-white text-[10px] font-bold px-2 py-1 rounded-md uppercase tracking-wider shadow-md animate-pulse">
+                          {item.label}
+                        </span>
+                      )}
                     </div>
                     
                     <button 
@@ -119,10 +154,10 @@ const MenuPage = () => {
                         e.stopPropagation();
                         // Add to cart logic here
                       }}
-                      className="w-full bg-primary text-black py-3 rounded-xl font-bold hover:bg-white transition-all duration-300 shadow-lg shadow-primary/20 flex items-center justify-center gap-2"
+                      className="w-full bg-primary text-black py-3 rounded-xl font-bold hover:bg-white transition-all duration-300 shadow-lg shadow-primary/20 flex items-center justify-center gap-2 group-hover:shadow-primary/40"
                     >
-                      <span>ADD TO CART</span>
-                      <i className="fas fa-shopping-cart text-sm"></i>
+                      <span>ORDER NOW</span>
+                      <i className="fas fa-arrow-right text-sm transition-transform group-hover:translate-x-1"></i>
                     </button>
                   </div>
                 </div>
@@ -130,7 +165,9 @@ const MenuPage = () => {
             ))
           ) : (
             <div className="col-span-full text-center py-20">
-              <div className="text-6xl mb-4">🍽️</div>
+              <div className="text-6xl mb-4 flex justify-center">
+                <FaExclamationCircle className="text-gray-600" />
+              </div>
               <h3 className="text-2xl text-gray-400 font-comfortaa">No items found</h3>
               <p className="text-gray-500 mt-2">Try adjusting your search or filter</p>
             </div>

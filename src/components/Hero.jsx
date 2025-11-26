@@ -29,8 +29,8 @@ const Hero = () => {
   return (
     <section ref={containerRef} id="heroSection" className="hero-section flex flex-col lg:flex-row justify-center items-center min-h-screen px-[50px] bg-primary pt-20">
       <div ref={textRef} className="items flex flex-col gap-[10px] lg:w-1/2 p-[20px] rounded-[10px] bg-[radial-gradient(var(--color-primary-alt)_20%,var(--color-primary)_70%)]">
-        <h1 className="text-[3rem] lg:text-[3.5rem] pt-[30px] text-center lg:text-left leading-tight">
-          EXPLORE MUMBAI'S CULINARY WONDERLAND!
+        <h1 className="text-[3rem] lg:text-[3.5rem] pt-[30px] text-center lg:text-left leading-tight capitalize text-black">
+          Explore India's Culinary Wonderland!
         </h1>
         <p className="text-[1rem] lg:text-[1.5rem] text-center lg:text-justify">
           A Gastronomic Journey Await! Savor the Irresistible Delights of

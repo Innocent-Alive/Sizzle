@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { FaInstagram, FaYoutube, FaFacebook, FaTwitter } from 'react-icons/fa';
 import swiggyLogo from '../assets/Swiggy-Logo.png';
 import dunzoLogo from '../assets/dunzo-logo.png';
 import uberEatsLogo from '../assets/logo-uber-eats.png';
@@ -33,38 +34,57 @@ const Footer = () => {
         </div>
       </section>
 
-      <footer className="font-comfortaa font-bold bg-black text-white pt-[50px] px-[60px] pb-[10px] mt-[50px] border-t border-white/10">
-        <div className="social-media flex items-center flex-wrap mb-[30px] text-[1.2rem] font-black">
-          <h4>Get New Deals &amp; Updates:</h4>
-          <div className="social-icons ml-[20px]">
-            <i className="fa-brands fa-square-instagram mr-[20px] text-[2.5rem] transition-all duration-200 ease-in hover:text-primary-alt cursor-pointer"></i>
-            <i className="fa-brands fa-square-youtube mr-[20px] text-[2.5rem] transition-all duration-200 ease-in hover:text-primary-alt cursor-pointer"></i>
-            <i className="fa-brands fa-square-facebook mr-[20px] text-[2.5rem] transition-all duration-200 ease-in hover:text-primary-alt cursor-pointer"></i>
+      <footer 
+        className="font-comfortaa font-bold text-white pt-[50px] px-[20px] lg:px-[60px] pb-[20px] mt-[50px] border-t border-white/10"
+        style={{
+          backgroundColor: '#000',
+          backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255, 69, 0, 0.1) 10px, rgba(255, 69, 0, 0.1) 11px)'
+        }}
+      >
+        <div className="social-media flex flex-col md:flex-row items-center justify-between mb-[40px] gap-4">
+          <h4 className="text-[1.2rem] font-black">Get New Deals &amp; Updates:</h4>
+          <div className="social-icons flex gap-4">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-primary-alt transition-colors duration-200">
+              <FaInstagram size={32} />
+            </a>
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-primary-alt transition-colors duration-200">
+              <FaYoutube size={28} />
+            </a>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-primary-alt transition-colors duration-200">
+              <FaFacebook size={28} />
+            </a>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-primary-alt transition-colors duration-200">
+              <FaTwitter size={28} />
+            </a>
           </div>
         </div>
-        <div className="footer flex justify-between flex-wrap gap-8">
-          <div className="footer-items flex flex-col gap-2">
-            <Link to="/terms" className="text-white text-[0.8rem] transition-all duration-200 ease-in hover:underline hover:text-primary-alt">Terms &amp; Conditions</Link>
-            <Link to="/privacy" className="text-white text-[0.8rem] transition-all duration-200 ease-in hover:underline hover:text-primary-alt">Privacy Policy</Link>
-            <a href="" className="text-white text-[0.8rem] transition-all duration-200 ease-in hover:underline hover:text-primary-alt">Caution Notice</a>
-            <a href="" className="text-white text-[0.8rem] transition-all duration-200 ease-in hover:underline hover:text-primary-alt">Sizzle India</a>
+
+        <div className="footer grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+          <div className="footer-items flex flex-col gap-3">
+            <Link to="/terms" className="text-gray-400 text-[0.9rem] transition-all duration-200 ease-in hover:text-primary hover:translate-x-1">Terms &amp; Conditions</Link>
+            <Link to="/privacy" className="text-gray-400 text-[0.9rem] transition-all duration-200 ease-in hover:text-primary hover:translate-x-1">Privacy Policy</Link>
+            <a href="#" className="text-gray-400 text-[0.9rem] transition-all duration-200 ease-in hover:text-primary hover:translate-x-1">Caution Notice</a>
+            <a href="#" className="text-gray-400 text-[0.9rem] transition-all duration-200 ease-in hover:text-primary hover:translate-x-1">Sizzle India</a>
           </div>
-          <div className="footer-items flex flex-col gap-2">
-            <a href="" className="text-white text-[0.8rem] transition-all duration-200 ease-in hover:underline hover:text-primary-alt">Nutrition &amp; Allergen</a>
-            <a href="" className="text-white text-[0.8rem] transition-all duration-200 ease-in hover:underline hover:text-primary-alt">About Sizzle</a>
-            <a href="" className="text-white text-[0.8rem] transition-all duration-200 ease-in hover:underline hover:text-primary-alt">Gift Card</a>
-            <a href="" className="text-white text-[0.8rem] transition-all duration-200 ease-in hover:underline hover:text-primary-alt">Order Lookup</a>
+          <div className="footer-items flex flex-col gap-3">
+            <a href="#" className="text-gray-400 text-[0.9rem] transition-all duration-200 ease-in hover:text-primary hover:translate-x-1">Nutrition &amp; Allergen</a>
+            <a href="#" className="text-gray-400 text-[0.9rem] transition-all duration-200 ease-in hover:text-primary hover:translate-x-1">About Sizzle</a>
+            <a href="#" className="text-gray-400 text-[0.9rem] transition-all duration-200 ease-in hover:text-primary hover:translate-x-1">Gift Card</a>
+            <a href="#" className="text-gray-400 text-[0.9rem] transition-all duration-200 ease-in hover:text-primary hover:translate-x-1">Order Lookup</a>
           </div>
-          <div className="footer-items flex flex-col gap-2">
-            <Link to="/contact" className="text-white text-[0.8rem] transition-all duration-200 ease-in hover:underline hover:text-primary-alt">Contact Us</Link>
-            <a href="" className="text-white text-[0.8rem] transition-all duration-200 ease-in hover:underline hover:text-primary-alt">Get Help</a>
-            <a href="" className="text-white text-[0.8rem] transition-all duration-200 ease-in hover:underline hover:text-primary-alt">Support</a>
-            <a href="" className="text-white text-[0.8rem] transition-all duration-200 ease-in hover:underline hover:text-primary-alt">Feedback</a>
+          <div className="footer-items flex flex-col gap-3">
+            <Link to="/contact" className="text-gray-400 text-[0.9rem] transition-all duration-200 ease-in hover:text-primary hover:translate-x-1">Contact Us</Link>
+            <a href="#" className="text-gray-400 text-[0.9rem] transition-all duration-200 ease-in hover:text-primary hover:translate-x-1">Get Help</a>
+            <a href="#" className="text-gray-400 text-[0.9rem] transition-all duration-200 ease-in hover:text-primary hover:translate-x-1">Support</a>
+            <a href="#" className="text-gray-400 text-[0.9rem] transition-all duration-200 ease-in hover:text-primary hover:translate-x-1">Feedback</a>
           </div>
         </div>
-        <div className="credits mt-[30px] text-center">
+
+        <div className="credits mt-[30px] pt-6 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-400">
           <p>Copyright &copy; 2024</p>
-          <p>Created By The <a className="text-primary tracking-[1px] font-black no-underline transition-all duration-100 ease-in hover:text-white hover:underline cursor-pointer">Innocent</a>.</p>
+          <p>
+            Created By The <a href="https://abhaykumardas.netlify.app" target="_blank" rel="noopener noreferrer" className="text-primary font-black no-underline transition-all duration-200 hover:text-white hover:underline">Innocent</a>.
+          </p>
         </div>
       </footer>
     </>
