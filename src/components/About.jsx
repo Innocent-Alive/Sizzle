@@ -67,8 +67,8 @@ const About = () => {
     // Smart Video Playback
     ScrollTrigger.create({
       trigger: ".video-container",
-      start: "top 30%",
-      end: "bottom 60%",
+      start: "top 60%",
+      end: "bottom 40%",
       onEnter: () => {
         if (videoRef.current) {
           videoRef.current.play();
