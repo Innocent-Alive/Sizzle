@@ -50,7 +50,7 @@ function App() {
                   <Marquee />
                   <Menu />
                   <Reviews />
-                  <DealsPage />
+                  <DealsPage isHome={true} />
                   <Locations />
                 </div>
               </div>

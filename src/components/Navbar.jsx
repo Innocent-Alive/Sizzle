@@ -36,8 +36,8 @@ const Navbar = () => {
     <div className="fixed top-0 left-0 w-full z-[100]">
       <nav className={`flex justify-between items-center px-[20px] lg:px-[50px] py-2 transition-all duration-300 ${
         isTransparent 
-          ? 'bg-primary shadow-lg' 
-          : 'bg-black/80 backdrop-blur-md border-b border-white/5 shadow-2xl'
+          ? 'bg-transparent' 
+          : 'bg-black/90 backdrop-blur-md border-b border-white/5 shadow-2xl'
       }`}>
         <Link to="/" className="no-underline">
           <div className="flex flex-col p-[2px] rounded-[10px] cursor-pointer bg-[radial-gradient(var(--color-primary-alt)_10%,var(--color-primary)_80%)] hover:scale-105 transition-transform duration-300">

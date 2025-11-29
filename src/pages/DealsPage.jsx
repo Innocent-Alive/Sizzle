@@ -8,7 +8,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const DealsPage = () => {
+const DealsPage = ({ isHome = false }) => {
   const [copiedId, setCopiedId] = useState(null);
   const containerRef = useRef();
 
@@ -74,11 +74,11 @@ const DealsPage = () => {
           </p>
         </div>
 
-        <div className="deals-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className={`deals-grid grid ${isHome ? 'grid-cols-2 gap-3' : 'grid-cols-1 gap-6'} md:grid-cols-2 lg:grid-cols-3`}>
           {deals.map((deal) => (
             <div
               key={deal.id}
-              className={`deal-card-item relative overflow-hidden rounded-3xl p-6 border-2 ${getCardStyle(deal.variant)} hover:scale-[1.02] transition-all duration-300 flex flex-col justify-between h-[250px]`}
+              className={`deal-card-item relative overflow-hidden rounded-3xl border-2 ${getCardStyle(deal.variant)} hover:scale-[1.02] transition-all duration-300 flex flex-col justify-between ${isHome ? 'p-4 h-[200px]' : 'p-6 h-[250px]'}`}
             >
               {/* Glow Effect */}
               <div className={`absolute -top-20 -right-20 w-48 h-48 rounded-full blur-3xl transition-colors ${
@@ -87,42 +87,42 @@ const DealsPage = () => {
 
               <div className="relative z-10">
                 <div className="flex justify-between items-start mb-2">
-                  <span className={`text-xs font-bold uppercase tracking-wider px-2 py-1 rounded-md ${
+                  <span className={`font-bold uppercase tracking-wider rounded-md ${
                     isDark(deal.variant) ? 'bg-primary/20 text-primary' : 'bg-black/10 text-black/70'
-                  }`}>
+                  } ${isHome ? 'text-[10px] px-1.5 py-0.5' : 'text-xs px-2 py-1'}`}>
                     {deal.offer}
                   </span>
                 </div>
-                <h2 className="text-2xl font-bowlby leading-tight mb-1">{deal.title}</h2>
-                <p className={`text-sm font-comfortaa ${
+                <h2 className={`font-bowlby leading-tight mb-1 ${isHome ? 'text-lg' : 'text-2xl'}`}>{deal.title}</h2>
+                <p className={`font-comfortaa ${
                   isDark(deal.variant) ? 'text-gray-400' : 'text-black/70'
-                }`}>
+                } ${isHome ? 'text-xs line-clamp-2' : 'text-sm'}`}>
                   {deal.subtitle}
                 </p>
               </div>
 
-              <div className="relative z-10 mt-4 flex items-end justify-between">
-                <span className={`text-4xl font-bowlby ${
+              <div className="relative z-10 mt-auto flex items-end justify-between gap-2">
+                <span className={`font-bowlby ${
                   isDark(deal.variant) ? 'text-primary-alt' : 'text-black'
-                }`}>
+                } ${isHome ? 'text-2xl' : 'text-4xl'}`}>
                   ₹{deal.price}
                 </span>
 
                 <button
                   onClick={() => handleCopy(deal.code, deal.id)}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-xl font-bold font-comfortaa transition-all duration-300 ${
+                  className={`flex items-center justify-center gap-1 rounded-xl font-bold font-comfortaa transition-all duration-300 ${
                     isDark(deal.variant) 
                       ? 'bg-white/10 hover:bg-primary hover:text-black text-white' 
                       : 'bg-black/10 hover:bg-black hover:text-white text-black'
-                  }`}
+                  } ${isHome ? 'px-3 py-1.5 text-xs' : 'px-4 py-2 text-base'}`}
                 >
                   {copiedId === deal.id ? (
                     <>
-                      <FaCheck /> Copied!
+                      <FaCheck /> {isHome ? '' : 'Copied!'}
                     </>
                   ) : (
                     <>
-                      <FaCopy /> {deal.code}
+                      <FaCopy /> {isHome ? 'CODE' : deal.code}
                     </>
                   )}
                 </button>

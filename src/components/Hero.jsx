@@ -29,39 +29,39 @@ const Hero = () => {
   }, { scope: containerRef });
 
   return (
-    <section ref={containerRef} id="heroSection" className="hero-section min-h-screen bg-primary pt-28 pb-16 px-4 lg:px-16 flex items-center overflow-hidden relative">
-      <div className="max-w-7xl mx-auto w-full flex flex-col-reverse lg:flex-row items-center justify-between gap-12 lg:gap-8">
+    <section ref={containerRef} id="heroSection" className="hero-section min-h-screen bg-primary pt-24 pb-12 px-4 lg:px-16 flex items-center overflow-hidden relative">
+      <div className="max-w-7xl mx-auto w-full flex flex-col-reverse lg:flex-row items-center justify-between gap-8 lg:gap-8">
         
         {/* Left Content - Text */}
         <div ref={textRef} className="flex-1 text-center lg:text-left z-10">
-          <h1 className="text-5xl lg:text-7xl font-bowlby text-black leading-tight mb-6 drop-shadow-sm">
+          <h1 className="text-4xl md:text-5xl lg:text-7xl font-bowlby text-black leading-tight mb-4 lg:mb-6 drop-shadow-sm">
             Explore India's <br className="hidden lg:block"/>
             Culinary <br className="hidden lg:block"/>
             Wonderland!
           </h1>
           
-          <p className="text-white/90 font-comfortaa text-lg lg:text-xl leading-relaxed mb-8 max-w-2xl mx-auto lg:mx-0 font-bold drop-shadow-md">
+          <p className="text-white/90 font-comfortaa text-base lg:text-xl leading-relaxed mb-6 lg:mb-8 max-w-xl mx-auto lg:mx-0 font-bold drop-shadow-md px-2 lg:px-0">
             A Gastronomic Journey Awaits! Savor the Irresistible Delights of
             Authentic Pizza, Juicy Burgers, Crispy Fries, and More. Elevate Your
             Taste Buds to New Heights with Every Bite.
           </p>
           
           <Link to="/menu">
-            <button className="bg-black text-white font-bowlby text-lg px-8 py-4 rounded-xl hover:bg-white hover:text-black transition-all duration-300 shadow-[0_10px_20px_rgba(0,0,0,0.2)] hover:shadow-[0_15px_30px_rgba(0,0,0,0.3)] hover:-translate-y-1 active:translate-y-0">
+            <button className="bg-black text-white font-bowlby text-base lg:text-lg px-6 py-3 lg:px-8 lg:py-4 rounded-xl hover:bg-white hover:text-black transition-all duration-300 shadow-[0_10px_20px_rgba(0,0,0,0.2)] hover:shadow-[0_15px_30px_rgba(0,0,0,0.3)] hover:-translate-y-1 active:translate-y-0">
               BROWSE MENU
             </button>
           </Link>
         </div>
 
         {/* Right Content - Image */}
-        <div ref={imageRef} className="flex-1 flex justify-center lg:justify-end relative z-10">
+        <div ref={imageRef} className="flex-1 flex justify-center lg:justify-end relative z-10 w-full">
           {/* Decorative Glow */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-white/20 blur-[100px] rounded-full -z-10"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-white/20 blur-[80px] lg:blur-[100px] rounded-full -z-10"></div>
           
           <img 
             src={heroImage} 
             alt="Delicious Burger" 
-            className="w-full max-w-[500px] lg:max-w-[650px] object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.3)] hover:scale-105 transition-transform duration-500"
+            className="w-[280px] md:w-[400px] lg:w-full max-w-[500px] lg:max-w-[650px] object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.3)] hover:scale-105 transition-transform duration-500"
           />
         </div>
       </div>
